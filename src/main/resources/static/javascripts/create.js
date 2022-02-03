@@ -53,10 +53,13 @@ function createPost() {
     fetch("http://localhost:8090/post", post);
 }
 
-function createComment() {
+function createComment(postId) {
 
     // Attributes from form
     let content = document.getElementById('new_comment_content');
+
+    const response = fetch('http://localhost:8090/post/:'+postId);
+    const post = response.json();
 
     const comment = {
         method: 'POST',
@@ -67,7 +70,8 @@ function createComment() {
         body: JSON.stringify({
             author: sessionStorage.getItem("user"),
             content: content,
-            date: Date.now()
+            date: Date.now(),
+            post: post
         })
     }
 

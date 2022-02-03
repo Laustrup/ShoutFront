@@ -9,10 +9,10 @@ function validateLogin() {
     const loginMismatch = document.getElementById('login_mismatch')
 
     // Checks if password fits username in db
-    const allow_login = fetch('https://localhost:8090/allow_login/:' + username + '/:' + password).json();
+    const allow_login = fetch('http://localhost:8090/allow_login/:' + username + '/:' + password).json();
 
     if (allow_login===true) {
-        const user = fetch('https://localhost:8090/user/:' + username).json();
+        const user = fetch('http://localhost:8090/user/:' + username).json();
         sessionStorage.setItem("user",user);
         window.location.href("/dashboard/?username="+username);
     }
