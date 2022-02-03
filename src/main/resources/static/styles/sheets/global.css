@@ -1,0 +1,72 @@
+
+/* Mostly copied from former Systemudviklings exam that I wrote */
+*{
+    margin: 0 auto;
+    justify-content: center;
+}
+
+header{
+
+    border-radius: 15px;
+    border: 2px solid blue;
+
+    background-image: linear-gradient(to bottom right, purple, cyan);
+
+    margin-bottom: 40px;
+    margin-top: 40px;
+
+    padding: 10px;
+
+    font-size: 17px;
+    text-align: center;
+
+    width: 780px;
+
+    color: black;
+
+    box-shadow: 5px 5px gray;
+}
+
+body{
+    /* Text */
+    font-family: 'Varela Round', sans-serif;
+
+    /* Background */
+    background-image: url("/static/styles/style_images/background.png");
+    background-size: cover;
+}
+
+.caption{
+    width: 15em;
+}
+
+main{
+    width: 1000px;
+    height: 600px;
+
+    /* Order and display */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* Background */
+    background-image: linear-gradient(to bottom right, cyan, blue);
+
+    /* Border */
+    border: 2px solid blue;
+    border-radius: 15px;
+    box-shadow: 5px 5px gray
+}
+
+table, th, td {border: 1px solid black;}
+
+ul{list-style: none;}
+
+img {
+    max-width: 70%;
+    height: auto;
+    width: auto\9;
+
+    border: 2px solid #424242;
+    border-radius: 15px;
+}
