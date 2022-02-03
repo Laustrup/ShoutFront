@@ -1,10 +1,11 @@
 
 renderPosts();
+let posts;
 
 async function renderPosts() {
 
     const response = await fetch("http://localhost:8090/posts");
-    const posts = await response.json();
+    posts = await response.json();
 
     for (let i = 0; i < posts.length;i++) {
 
@@ -60,4 +61,8 @@ async function renderPosts() {
         `
     }
 
+}
+
+function sortPosts(hashtags) {
+    posts.sort((a,b) => a.posts.localeCompare(b.hashtags) )
 }
