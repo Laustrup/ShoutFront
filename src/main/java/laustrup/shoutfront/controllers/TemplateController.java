@@ -19,4 +19,10 @@ public class TemplateController {
         model.addAttribute("body","dashboard");
         return "index.html";
     }
+
+    @GetMapping("/edit_post/?pid={post_id}")
+    public String postEdit(@PathVariable(name = "post_id") Long id, Model model) {
+        model.addAttribute("body","post_edit");
+        return "index.html";
+    }
 }

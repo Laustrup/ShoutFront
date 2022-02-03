@@ -14,7 +14,7 @@ function validateLogin() {
     if (allow_login===true) {
         const user = fetch('http://localhost:8090/user/:' + username).json();
         sessionStorage.setItem("user",user);
-        window.location.href("/dashboard/?username="+username);
+        window.location.href("http://localhost:8080/dashboard/?username="+username);
     }
     else {
         let message = 'Password or username doesn\' fit';

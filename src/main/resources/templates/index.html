@@ -15,6 +15,10 @@
             <main th:replace="@{/fragments/bodies/dashboard.html}"></main>
         </div>
 
+        <div th:if="${body eq 'post_edit'}">
+            <main th:replace="@{/fragments/bodies/post_edit.html}"></main>
+        </div>
+
     </body>
 
     <script src="../static/javascripts/fetch.js" type="text/javascript"></script>

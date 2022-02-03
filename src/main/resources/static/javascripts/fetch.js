@@ -8,15 +8,18 @@ async function renderPosts() {
 
     for (let i = 0; i < posts.length;i++) {
 
+        // Post section, will add delete button, if user is creator
         if (posts[i].author === sessionStorage.getItem("user")) {
             document.getElementById('dashboard_content').innerHTML += `
         <section class="post_section">
             <div><h3>posts[i].title</h3></div>
             <div><p>By posts[i].author.username</p></div>
             <div><h4>posts[i].content</h4></div>
+            <div><button type="submit" onclick="renderEdit(posts[i].id)">Edit</button></div>
             <div><button onclick="deletePost(posts[i].id)">Delete</button></div>
+            </section>
             <section class="comment_section">
-        `
+            `
         }
         else {
             document.getElementById('dashboard_content').innerHTML += `
@@ -27,6 +30,8 @@ async function renderPosts() {
                 <section class="comment_section">
             `
         }
+
+        // Comments of post section, will add delete button, if user is creator
         for (let j = 0; j < posts[i].comments.length;j++) {
             if (posts[i].comments[j].author === sessionStorage.getItem("user")) {
                 document.getElementById('dashboard_content').innerHTML += `
@@ -48,6 +53,8 @@ async function renderPosts() {
                 `
             }
         }
+
+        // End of post and as well a form for creating a new comment
         document.getElementById('dashboard_content').innerHTML += `
                 <section class="create_comment_section">
                     <form>
@@ -56,7 +63,8 @@ async function renderPosts() {
                     </form>
                 </section>
             </section>
-        </section>`
+        </section>
+        `
     }
 
 }
