@@ -28,16 +28,9 @@ header{
 }
 
 body{
-    /* Text */
-    font-family: 'Varela Round', sans-serif;
-
     /* Background */
-    background-image: url("/static/styles/style_images/background.png");
+    background-image: linear-gradient(to bottom right, purple, cyan);
     background-size: cover;
-}
-
-.caption{
-    width: 15em;
 }
 
 main{

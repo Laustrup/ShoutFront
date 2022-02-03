@@ -14,7 +14,7 @@ public class TemplateController {
         return "index.html";
     }
 
-    @GetMapping("/?username={username}")
+    @GetMapping("/dashboard/?username={username}")
     public String dashboard(@PathVariable(name = "username") String username, Model model) {
         model.addAttribute("body","dashboard");
         return "index.html";
