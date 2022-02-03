@@ -1,6 +1,6 @@
 
 function deleteUser() {
-    let user = sessionStorage.getItem("user");
+    const user = sessionStorage.getItem("user");
     fetch("http://localhost:8090/delete_user/:"+user.id);
     window.location.href("/");
 }

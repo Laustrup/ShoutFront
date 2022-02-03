@@ -17,9 +17,9 @@ async function editContent() {
 
     document.getElementById('edit_content').innerHTML = `
     <section id="post_edit_display">
-        <h3>post.title</h3>
-        <h4>post.content</h4>
-        <p>Written: post.date</p>
+        <h3>${post.title}</h3>
+        <h4>${post.content}</h4>
+        <p>Written: ${post.date}</p>
     </section>
     
     <section>

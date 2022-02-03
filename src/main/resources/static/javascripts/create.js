@@ -2,10 +2,10 @@
 function createUser() {
 
     // Attributes from form
-    let username = document.getElementById('new_user_username');
-    let password = document.getElementById('new_user_password');
-    let description = document.getElementById('new_user_description');
-    let gender = document.getElementById('new_user_gender');
+    const username = document.getElementById('new_user_username').value;
+    const password = document.getElementById('new_user_password').value;
+    const description = document.getElementById('new_user_description').value;
+    const gender = document.getElementById('new_user_gender').value;
 
     const user = {
         method: 'POST',
@@ -17,20 +17,22 @@ function createUser() {
             username: username,
             password: password,
             description: description,
-            gender: gender
+            gender: gender,
+            posts: null,
+            comments: null
         })
     }
 
-    fetch("http://localhost:8090/user", user)
+    fetch("http://localhost:8090/user", user);
 }
 
 function createPost() {
 
     // Attributes from form
-    let title = document.getElementById('new_post_title');
-    let content = document.getElementById('new_post_content');
-    let hashtag = document.getElementById('new_post_hashtags');
-    let isPoliticalCorrect = document.getElementById('new_post_political_correct');
+    const title = document.getElementById('new_post_title').value;
+    const content = document.getElementById('new_post_content').value;
+    const hashtag = document.getElementById('new_post_hashtags').value;
+    const isPoliticalCorrect = document.getElementById('new_post_political_correct').value;
 
     const hashtags = hashtag.split("#");
 
@@ -56,7 +58,7 @@ function createPost() {
 function createComment(postId) {
 
     // Attributes from form
-    let content = document.getElementById('new_comment_content');
+    const content = document.getElementById('new_comment_content').value;
 
     const response = fetch('http://localhost:8090/post/:'+postId);
     const post = response.json();
