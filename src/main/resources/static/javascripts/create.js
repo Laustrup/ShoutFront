@@ -26,13 +26,16 @@ function createUser() {
     fetch("http://localhost:8090/user", user);
 }
 
-function createPost() {
+async function createPost() {
 
     // Attributes from form
     const title = document.getElementById("new_post_title").value;
     const content = document.getElementById("new_post_content").value;
     const hashtag = document.getElementById("new_post_hashtags").value;
     const isPoliticalCorrect = document.getElementById("new_post_political_correct").value;
+
+    const response = await fetch("http://localhost:8090/user/:"+sessionStorage.getItem("user_id"));
+    const author = await response.json();
 
     const hashtags = [hashtag];
 
@@ -43,7 +46,7 @@ function createPost() {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            author: sessionStorage.getItem("user"),
+            author: author,
             title: title,
             content: content,
             hashtags: hashtags,

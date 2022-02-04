@@ -17,7 +17,8 @@ async function renderPosts() {
             <div><p>By ${posts[i].author.username}</p></div>
             <div><p>Written: ${posts[i].date}</p></div>
             <div><h4>${posts[i].content}</h4></div>
-            <div><button onclick="renderEdit(${posts[i].id})">Edit</button></div>
+            <div><input type="text" id="new_post_title" onchange="editPostTitle(${posts[i].id})" placeholder="Change title"></div>
+            <div><textarea id="new_post_content" onchange="editPostContent(${posts[i].id})" placeholder="Change content"></div>            
             <div><button onclick="deletePost(${posts[i].id})">Delete</button></div>
             `
         }
