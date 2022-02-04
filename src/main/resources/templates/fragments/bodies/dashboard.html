@@ -27,13 +27,8 @@
                     </form>
                 </section>
 
-                <label for="sort_dropdown">Sort: </label>
-                <select id="sort_dropdown" onchange="sortPosts()">
-                    <option>#Tags</option>
-                    <option value="#conspiracy">#conspiracy</option>
-                    <option value="#animals">#animals</option>
-                    <option value="#cute">#cute</option>
-                </select>
+                <label for="sort_search">Sort: </label>
+                <input type="text" id="sort_search" onchange="sortPosts()" placeholder="Search hashtags...">
 
                 <section id="dashboard_section">
                     <h2>Posts</h2>

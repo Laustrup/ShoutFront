@@ -1,6 +1,4 @@
 
-userInfo();
-
 async function validateLogin() {
     const response = await fetch("http://localhost:8090/user/:" + 1);
     const user = await response.json();
@@ -13,7 +11,3 @@ function logout() {
     document.location.href = 'http://localhost:8080/';
 }
 
-async function userInfo() {
-    let username = sessionStorage.getItem("username");
-    document.getElementById("user_info_content").innerHTML += `<h2>Welcome ${username}</h2>`
-}

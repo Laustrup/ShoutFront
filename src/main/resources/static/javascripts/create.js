@@ -18,8 +18,6 @@ function createUser() {
             password: password,
             description: description,
             gender: gender,
-            posts: null,
-            comments: null
         })
     }
 
@@ -37,8 +35,6 @@ async function createPost() {
     const response = await fetch("http://localhost:8090/user/:"+sessionStorage.getItem("user_id"));
     const author = await response.json();
 
-    const hashtags = [hashtag];
-
     const post = {
         method: 'POST',
         headers: {
@@ -49,22 +45,25 @@ async function createPost() {
             author: author,
             title: title,
             content: content,
-            hashtags: hashtags,
+            hashtag: hashtag,
             isPoliticalCorrect: isPoliticalCorrect,
             date: Date.now()
         })
     }
 
-    fetch("http://localhost:8090/post", post);
+    fetch("http://localhost:8090/post/:"+author.id, post);
 }
 
-function createComment(postId) {
+async function createComment(postId) {
 
     // Attributes from form
     const content = document.getElementById("new_comment_content").value;
 
-    const response = fetch("http://localhost:8090/post/:"+postId);
-    const post = response.json();
+    let response = await fetch("http://localhost:8090/post/:"+postId);
+    const post = await response.json();
+
+    response = await fetch("http://localhost:8090/user/:"+sessionStorage.getItem("user_id"));
+    const author = await response.json();
 
     const comment = {
         method: 'POST',
@@ -73,7 +72,7 @@ function createComment(postId) {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            author: sessionStorage.getItem("user"),
+            author: author,
             content: content,
             date: Date.now(),
             post: post
