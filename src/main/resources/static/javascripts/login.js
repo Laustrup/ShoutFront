@@ -1,10 +1,18 @@
 
-function validateLogin() {
-    const user = fetch('http://localhost:8090/user/:' + 1).then(data=>data.json());
+userInfo();
+
+async function validateLogin() {
+    const response = await fetch('http://localhost:8090/user/:' + 1);
+    const user = await response.json();
     sessionStorage.setItem("user",user);
-    window.location.href("http://localhost:8080/dashboard/?");
+    document.location.href = 'http://localhost:8080/dashboard/';
 }
 function logout() {
     sessionStorage.removeItem("user");
-    window.location.href("/");
+    document.location.href = 'http://localhost:8080/';
+}
+
+async function userInfo() {
+    const user = sessionStorage.getItem("user");
+    document.getElementById("user_info_content").innerHTML += `<h2>Welcome ${user.username}</h2>`
 }

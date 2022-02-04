@@ -4,9 +4,7 @@
                 <section id="login_section">
                     <div id="login_mismatch"></div>
                     <h4>Login:</h4>
-                    <form id="login_form">
-                        <button type="submit" onclick="validateLogin()">Login</button>
-                    </form>
+                    <button onclick="validateLogin()">Login</button>
                 </section>
 
                 <section id="create_user_section">
@@ -24,9 +22,9 @@
 
                         <label for="new_user_gender">Gender*: </label>
                         <select id="new_user_gender" required>
-                            <option value="1">Male</option>
-                            <option value="2">Female</option>
-                            <option value="3">Other</option>
+                            <option value="0">Male</option>
+                            <option value="1">Female</option>
+                            <option value="2">Other</option>
                         </select>
 
                         <button type="submit" onclick="createUser()">Sign up</button>
