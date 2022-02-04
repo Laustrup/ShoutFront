@@ -6,31 +6,34 @@ async function renderPosts() {
 
     const response = await fetch("http://localhost:8090/posts");
     posts = await response.json();
+    let userId = sessionStorage.getItem("user_id");
 
     for (let i = 0; i < posts.length;i++) {
 
         // Post section, will add delete button, if user is creator
-        if (posts[i].author === sessionStorage.getItem("user")) {
-            document.getElementById('dashboard_content').innerHTML += `
+        if (posts[i].author.id === userId) {
+            document.getElementById("dashboard_content").innerHTML += `
             <div><h3>${posts[i].title}</h3></div>
             <div><p>By ${posts[i].author.username}</p></div>
+            <div><p>Written: ${posts[i].date}</p></div>
             <div><h4>${posts[i].content}</h4></div>
-            <div><button type="submit" onclick="renderEdit(${posts[i].id})">Edit</button></div>
+            <div><button onclick="renderEdit(${posts[i].id})">Edit</button></div>
             <div><button onclick="deletePost(${posts[i].id})">Delete</button></div>
             `
         }
         else {
-            document.getElementById('dashboard_content').innerHTML += `
+            document.getElementById("dashboard_content").innerHTML += `
                 <div><h3>${posts[i].title}</h3></div>
                 <div><p>By ${posts[i].author.username}</p></div>
+                <div><p>Written: ${posts[i].date}</p></div>
                 <div><h4>${posts[i].content}</h4></div>
             `
         }
 
         // Comments of post section, will add delete button, if user is creator
-        for (let j = 0; j < posts[i].comments.length;j++) {
-            if (posts[i].comments[j].author === sessionStorage.getItem("user")) {
-                document.getElementById('dashboard_content').innerHTML += `
+        for (let j = 0; j < posts[i].comments;j++) {
+            if (posts[i].comments[j].author.id === userId) {
+                document.getElementById("dashboard_content").innerHTML += `
                 <section class="comment_container">
                     <div><h5>${posts[i].comments[j].author.username}</h5></div>
                     <div><p>${posts[i].comments[j].content}</p></div>
@@ -40,7 +43,7 @@ async function renderPosts() {
                 `
             }
             else {
-                document.getElementById('dashboard_content').innerHTML += `
+                document.getElementById("dashboard_content").innerHTML += `
                 <section class="comment_container">
                     <div><h5>${posts[i].comments[j].author.username}</h5></div>
                     <div><p>${posts[i].comments[j].content}</p></div>
@@ -51,7 +54,7 @@ async function renderPosts() {
         }
 
         // End of post and as well a form for creating a new comment
-        document.getElementById('dashboard_content').innerHTML += `
+        document.getElementById("dashboard_content").innerHTML += `
                 <section class="create_comment_section">
                     <form>
                         <input type="text" placeholder="New comment..." required>
@@ -63,6 +66,8 @@ async function renderPosts() {
 
 }
 
-function sortPosts(hashtags) {
-    posts.sort((a,b) => a.posts.localeCompare(b.hashtags) )
+function sortPosts() {
+    const hashtag = document.getElementById("sort_dropdown").value;
+    posts.sort((a,b) => a.posts.hashtags.localeCompare(b.hashtag) )
 }
+

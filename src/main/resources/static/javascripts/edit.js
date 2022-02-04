@@ -15,7 +15,7 @@ async function editContent() {
     const response = await fetch("http://localhost:8090/post/:" + postId);
     const post = await response.json();
 
-    document.getElementById('edit_content').innerHTML = `
+    document.getElementById("edit_content").innerHTML = `
     <section id="post_edit_display">
         <h3>${post.title}</h3>
         <h4>${post.content}</h4>

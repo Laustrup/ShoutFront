@@ -2,9 +2,10 @@
 userInfo();
 
 async function validateLogin() {
-    const response = await fetch('http://localhost:8090/user/:' + 1);
+    const response = await fetch("http://localhost:8090/user/:" + 1);
     const user = await response.json();
-    sessionStorage.setItem("user",user);
+    sessionStorage.setItem("user_id",user.id);
+    sessionStorage.setItem("username",user.username)
     document.location.href = 'http://localhost:8080/dashboard/';
 }
 function logout() {
@@ -13,6 +14,6 @@ function logout() {
 }
 
 async function userInfo() {
-    const user = sessionStorage.getItem("user");
-    document.getElementById("user_info_content").innerHTML += `<h2>Welcome ${user.username}</h2>`
+    let username = sessionStorage.getItem("username");
+    document.getElementById("user_info_content").innerHTML += `<h2>Welcome ${username}</h2>`
 }

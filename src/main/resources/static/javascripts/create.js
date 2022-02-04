@@ -2,10 +2,10 @@
 function createUser() {
 
     // Attributes from form
-    const username = document.getElementById('new_user_username').value;
-    const password = document.getElementById('new_user_password').value;
-    const description = document.getElementById('new_user_description').value;
-    const gender = document.getElementById('new_user_gender').value;
+    const username = document.getElementById("new_user_username").value;
+    const password = document.getElementById("new_user_password").value;
+    const description = document.getElementById("new_user_description").value;
+    const gender = document.getElementById("new_user_gender").value;
 
     const user = {
         method: 'POST',
@@ -29,12 +29,12 @@ function createUser() {
 function createPost() {
 
     // Attributes from form
-    const title = document.getElementById('new_post_title').value;
-    const content = document.getElementById('new_post_content').value;
-    const hashtag = document.getElementById('new_post_hashtags').value;
-    const isPoliticalCorrect = document.getElementById('new_post_political_correct').value;
+    const title = document.getElementById("new_post_title").value;
+    const content = document.getElementById("new_post_content").value;
+    const hashtag = document.getElementById("new_post_hashtags").value;
+    const isPoliticalCorrect = document.getElementById("new_post_political_correct").value;
 
-    const hashtags = hashtag.split("#");
+    const hashtags = [hashtag];
 
     const post = {
         method: 'POST',
@@ -58,9 +58,9 @@ function createPost() {
 function createComment(postId) {
 
     // Attributes from form
-    const content = document.getElementById('new_comment_content').value;
+    const content = document.getElementById("new_comment_content").value;
 
-    const response = fetch('http://localhost:8090/post/:'+postId);
+    const response = fetch("http://localhost:8090/post/:"+postId);
     const post = response.json();
 
     const comment = {
